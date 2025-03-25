@@ -1,6 +1,7 @@
 package models;
 
 import utils.SemaphoreManager;
+
 import java.util.Random;
 
 public class Monitor implements Runnable {
@@ -8,10 +9,12 @@ public class Monitor implements Runnable {
 
     @Override
     public void run() {
+        System.out.println("🌅 Monitor has started their shift. Ready to assist students!");
+
         while (true) {
             try {
                 // Wait to be woken up
-                System.out.println("Monitor is sleeping... Waiting for students.");
+                System.out.println("🛌 Monitor is sleeping... Waiting for students.");
                 SemaphoreManager.monitorSemaphore.acquire();
 
                 while (true) {
@@ -21,17 +24,17 @@ public class Monitor implements Runnable {
                     SemaphoreManager.mutexSemaphore.release();
 
                     if (studentId == null) {
-                        System.out.println("No students left, monitor goes back to sleep.");
+                        System.out.println("💤 No students left. Monitor goes back to sleep.");
                         break;
                     }
 
                     // Release seat before attending the student
                     SemaphoreManager.seatSemaphore.release();
 
-                    System.out.println("Monitor is assisting Student " + studentId + "...");
+                    System.out.println("🎓 Monitor is assisting Student " + studentId + "...");
                     SemaphoreManager.studentReadySemaphore.release(); // Notify student it's their turn
-                    Thread.sleep(random.nextInt(2000)); // Simulate assistance time
-                    System.out.println("Monitor has finished assisting Student " + studentId + ".");
+                    Thread.sleep(1000 + random.nextInt(2000)); // Simulate assistance time (1-3 sec)
+                    System.out.println("✅ Monitor has finished assisting Student " + studentId + ". Next!");
 
                     SemaphoreManager.helpCompletedSemaphore.release(); // Notify student help is completed
                 }
