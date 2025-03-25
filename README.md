@@ -1,5 +1,11 @@
 # El Monitor Dormilón
 
+## **Integrantes:**
+
+- Santiago Escobar León - A00382203
+- Juan Manuel Díaz Moreno - A00394477
+- Juan David Colonia Aldana - A00395956
+
 ## Problema
 
 El departamento de CSI de la Universidad Icesi dispone de un monitor que ayuda a los estudiantes de los cursos de algoritmos con sus tareas de programación. La oficina del monitor es pequeña y solo tiene espacio para un escritorio, una silla para el monitor, una silla de visita y tres sillas en el corredor, donde los estudiantes pueden esperar si el monitor está ocupado.
